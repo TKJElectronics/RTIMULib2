@@ -46,6 +46,8 @@ INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/../RTIMULibVersion.txt)
 SET(LIBRTIMU_SRCS
     RTFusion.cpp
     RTFusionRTQF.cpp
+    RTFusionMadgwick.cpp
+    RTFusionMahony.cpp
     RTMath.cpp
     RTFusionKalman4.cpp
     RTIMUAccelCal.cpp

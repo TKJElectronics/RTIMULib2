@@ -125,6 +125,7 @@ void IMUThread::initThread()
 
     //  poll at the rate suggested bu the IMU
 
+    printf("Suggested IMU poll rate: %d\n", m_imu->IMUGetPollInterval());
     m_timer = startTimer(m_imu->IMUGetPollInterval());
 
     //  up the priority in case it's helpful
@@ -169,7 +170,8 @@ void IMUThread::timerEvent(QTimerEvent * /* event */)
 
     //  loop here to clear all samples just in case things aren't keeping up
 
-    while (m_imu->IMURead()) {
+    //while (m_imu->IMURead()) {
+        m_imu->IMURead();
         if (m_calibrationMode) {
             emit newCalData(m_imu->getCompass());
         } else {
@@ -181,7 +183,7 @@ void IMUThread::timerEvent(QTimerEvent * /* event */)
 
             emit newIMUData(data);
         }
-    }
+    //}
 }
 
 //----------------------------------------------------------

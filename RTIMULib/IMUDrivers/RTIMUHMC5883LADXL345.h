@@ -37,7 +37,7 @@
 #define L3G4200D_ADDRESS 0x69
 //#define HMC5883L_ADDRESS 0x1e
 
-#define CTRL_REG1 0x20
+#define CTRL_REG1 0x20 
 #define CTRL_REG2 0x21
 #define CTRL_REG3 0x22
 #define CTRL_REG4 0x23  // CTRL_REG4 controls the full-scale range, among other things:
@@ -60,6 +60,7 @@ private:
     bool setGyroSampleRate();
     bool readADXL345(short &x , short &y, short &z);
     bool readL3G4200D(short &x , short &y, short &z);
+    bool readITG3200(short &x , short &y, short &z);
     bool readHMC5883L(short &x , short &y, short &z);
 	
     unsigned char m_gyroSlaveAddr;                          // I2C address of L3G4200D gyro
@@ -69,6 +70,8 @@ private:
     RTFLOAT m_gyroScale;
     RTFLOAT m_accelScale;
     RTFLOAT m_compassScale;
+
+    bool m_firstTime;
 };
 
 #endif // _RTIMUHMC5883LADXL345_H

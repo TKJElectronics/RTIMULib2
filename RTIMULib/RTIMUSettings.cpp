@@ -726,8 +726,9 @@ bool RTIMUSettings::loadSettings()
 
         // accel calibration
 
-        } else if (strcmp(key, RTIMULIB_ACCELCAL_VALID) == 0) {
+        } else if (strcmp(key, RTIMULIB_ACCELCAL_VALID) == 0) {            
             m_accelCalValid = strcmp(val, "true") == 0;
+            printf("Valid accel calibration found: %d\n", m_accelCalValid);
         } else if (strcmp(key, RTIMULIB_ACCELCAL_MINX) == 0) {
             sscanf(val, "%f", &ftemp);
             m_accelCalMin.setX(ftemp);

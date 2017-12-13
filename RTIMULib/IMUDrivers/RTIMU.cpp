@@ -25,6 +25,8 @@
 #include "RTIMU.h"
 #include "RTFusionKalman4.h"
 #include "RTFusionRTQF.h"
+#include "RTFusionMadgwick.h"
+#include "RTFusionMahony.h"
 
 #include "RTIMUNull.h"
 #include "RTIMUMPU9150.h"
@@ -157,6 +159,14 @@ RTIMU::RTIMU(RTIMUSettings *settings)
 
     case RTFUSION_TYPE_RTQF:
         m_fusion = new RTFusionRTQF();
+        break;
+
+    case RTFUSION_TYPE_MADGWICK:
+        m_fusion = new RTFusionMadgwick();
+        break;
+
+    case RTFUSION_TYPE_MAHONY:
+        m_fusion = new RTFusionMahony();
         break;
 
     default:
@@ -435,9 +445,9 @@ void RTIMU::calibrateAverageCompass()
 }
 
 void RTIMU::calibrateAccel()
-{
+{    
     if (!getAccelCalibrationValid())
-        return;
+        return;    
 
     if (m_imuData.accel.x() >= 0)
         m_imuData.accel.setX(m_imuData.accel.x() / m_settings->m_accelCalMax.x());

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>rtimulib</name>
+  <version>1.0.0</version>
+  <description>RTIMULib to interface with I2C or SPI connected IMU sensors</description>
+
+  <author email="rom.reignier@gmail.com">Romain REIGNIER</author>
+  <maintainer email="rom.reignier@gmail.com">Romain REIGNIER</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+
+</package>
